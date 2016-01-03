@@ -9,6 +9,8 @@
 \usepackage{amsfonts}
 \usepackage{parskip}
 \usepackage{pbox}
+\usepackage{datetime}
+\usepackage{url}
 \newcommand{\tabitem}{~\\~~\llap{\textbullet}~}
 
 \usepackage[a4paper,margin=1cm,landscape]{geometry}
@@ -25,6 +27,8 @@
 \newcommand{\wrek}{7.5cm}
 \newcommand{\wrekv}{9.5cm}
 \newcommand{\wrekall}{17cm} % wrek+wrekv
+
+\newcommand{\footer}{\em LaTeX: \url{https://github.com/BroukPytlik/TIN-chomsky}, vytvořeno \today~v~\currenttime}
 
 \begin{document}
 %\newgeometry{margin=1cm} % modify this if you need even more space
@@ -163,6 +167,10 @@
 	}}\\
 	\hline
 
+	\multicolumn{4}{l}{\pbox{20cm}{
+	\vspace{10pt}
+	\footer
+	}}\\
 \end{tabular}
 \end{table}
 \pagebreak
@@ -317,12 +325,12 @@
 	\vspace{2pt}
 	}\\
 	\hline
-	\multicolumn{2}{l}{\pbox{\wrekall}{
+	\multicolumn{3}{l}{\pbox{20cm}{
 	\vspace{2pt}
 	Jazyky mimo $\mathcal{L}_0$ (jazyky algoritmicky neřešitelných problémů):\\
 	$co-L_{HP} = \{<M>\#<\omega>| M \text{ nezastaví pro } \omega\}$
 	$co-L_{MP} = \{<M>\#<\omega>| \omega \not\in L(M)\}$
-	}}&\\
+	}}\\
 
 \end{tabular}
 \end{table}

@@ -21,19 +21,20 @@
 \newcommand{\wza}{6.5cm}
 \newcommand{\wBothZA}{12cm} % wdza + wza
 
-\newcommand{\wkont}{7cm}
-\newcommand{\wrek}{6.5cm}
-\newcommand{\wrekv}{7cm}
-\newcommand{\wrekall}{13.5cm} % wrek+wrekv
+\newcommand{\wkont}{8cm}
+\newcommand{\wrek}{7.5cm}
+\newcommand{\wrekv}{9.5cm}
+\newcommand{\wrekall}{17cm} % wrek+wrekv
 
 \begin{document}
 %\newgeometry{margin=1cm} % modify this if you need even more space
 %\begin{landscape}
+\renewcommand{\arraystretch}{1.5}%
 \begin{table}
 \begin{tabular}{|l|l|l|l|}
 	\hline
 	& \pbox{\wreg}{\textbf{Regulární jazyky} $\mathcal{L}_3$} &
-	\pbox{\wdza}{\textbf{Deterministické bezkontextové jazyky}} &
+	\pbox{\wdza}{\vspace{2pt}\textbf{Deterministické bezkontextové jazyky}\vspace{2pt}} &
 	\pbox{\wza}{\textbf{Bezkontextové jazyky} $\mathcal{L}_2$}\\
 	\hline
 	\hline
@@ -61,17 +62,21 @@
 		\\
 		Eq. varianty: Rozšířený DRZA.
 	} & \pbox{\wza}{
+		\vspace{2pt}
 		Zásobníkový -- ZA\\
 		$M = (Q, \Sigma, \Gamma, \delta, q_0, Z_0, F)$\\
 		$\delta: Q\times(\Sigma\cup\{\varepsilon\})\times\Gamma \rightarrow 2^{Q\times\Gamma^*}$\\
 		\\
 		Eq. varianty: Rozšířený RZA umí pracovat s libovolným počtem $n$ symbolů na zásobníku najednou. $Q\times(\Sigma\cup\{\varepsilon\})\times\Gamma^* \rightarrow 2^{Q\times\Gamma^*}$
+		\vspace{2pt}
 	} \\
 	\hline
 	\pbox{\whead}{
+		\vspace{2pt}
 		\texttt{konfigurace}\\
 		$q$ -- aktuální stav\\
 		$\omega$ -- nezpracovaná část vstupu
+		\vspace{2pt}
 	} &
 	% regulární
 	\pbox{\wreg}{$C=(q,\omega) \in Q\times\Sigma^*$}&
@@ -86,9 +91,11 @@
 	} &
 	% det. bezk.
 	\multicolumn{2}{c|}{\pbox{\wBothZA}{
+		\vspace{2pt}
 		$\vdash \in (Q\times\Sigma^*\times\Gamma^*)\times(Q\times\Sigma^*\times\Gamma^*)$\\
 		$(q,\omega,\gamma)\vdash(q',\omega',\gamma') \Leftrightarrow$
 		$\omega = a\omega' \wedge \gamma = Z\alpha \wedge \gamma' = Z\beta \wedge (q',\beta)\in\delta(q,a,\alpha)$
+		\vspace{2pt}
 	}}\\
 	\hline
 	\pbox{\whead}{\texttt{Přijímaný jazyk}}&
@@ -98,6 +105,7 @@
 	\pbox{\wdza}{$L_{DZA} \subset L_{ZA}$}&
 	% bezk.
 	\pbox{\wza}{
+		\vspace{2pt}
 		$L_{M\varepsilon}={\omega|(q_0,\omega,Z_0)\vdash^*_M(q',\varepsilon,\varepsilon) \wedge q' \in Q}$\\
 		$L_{Mf}={\omega|(q_0,\omega,Z_0)\vdash^*_M(q_f,\varepsilon,\gamma) \wedge q_f \in F}$\\
 		$L_{Mf\varepsilon}={\omega|(q_0,\omega,Z_0)\vdash^*_M(q_f,\varepsilon,\varepsilon) \wedge q_f \in F}$\\
@@ -106,8 +114,10 @@
 	\pbox{\whead}{\texttt{Příklad}}&
 	% regulární
 	\pbox{\wreg}{
+		\vspace{2pt}
 		$L=\{a^n|n\geq 0\}$\\
 		$S\rightarrow aS|\varepsilon$
+		\vspace{2pt}
 	}&
 	% det. bezk.
 	\pbox{\wdza}{
@@ -123,9 +133,11 @@
 	\pbox{\whead}{\texttt{Tvar pravidel}}&
 	% regulární
 	\pbox{\wreg}{
+		\vspace{2pt}
 		\texttt{Pravá lineární gramatika:}\\ $A \rightarrow xB|x; A,B \in N, x \in \Sigma^*$\\
 		\texttt{Levá lineární gramatika:}\\$A \rightarrow Bx|x$\\
 		\texttt{Regulární gramatika} je taková l. nebo r. gram., kde se poč. neterminál $S$ neobjevuje na pravé straně žádného pravidla.
+		\vspace{2pt}
 	}&
 	% det. bezk.
 	\multicolumn{2}{c|}{\pbox{\wBothZA}{
@@ -158,6 +170,7 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\renewcommand{\arraystretch}{1.5}%
 \begin{table}
 \begin{tabular}{|l|l|l|}
 	\hline
@@ -166,82 +179,156 @@
 	\pbox{\wza}{\textbf{Rekurzivně vyčíslitelné jazyky} $\mathcal{L}_0$}\\
 	\hline
 	\hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Automat
 	% kontextové
 	\pbox{\wkont}{
+	Lineárně omezený automat - TS, který nikdy neopustí tu část pásky, na které byl zapsaný vstup (např. zarážka vlevo a vpravo od vstupu). Formálně:\\
+	$\Sigma \subseteq \Gamma - \{\Delta, <, >\}$
 	}&
 	% rekurzivní
 	\pbox{\wrek}{
+	Úplný TS -- TS který zastaví pro každý vstup, např. tak, že má dva koncové stavy.
 	}&
 	% rek. vyčíslitelné
 	\pbox{\wrekv}{
+	\vspace{1pt}
+	Turingův stroj TS $M=(Q, \Sigma, \Gamma, \delta, q_0, q_F)$,\\
+	$\Sigma \subseteq \Gamma - \{\Delta\}, L,R \not \in \Gamma, q_F \in Q$\\
+	$\delta: (Q-\{q_F\})\times\Gamma \rightarrow Q\times(\Gamma \cup \{L,R\})$\\
+	\\
+	Eq. varianty: víc koncových stavů, s oboustranně $\infty$ páskou,\\ nedeterministický $\delta: \cdots \rightarrow 2^{Q\times(\Gamma \cup \{L,R\})}$\\
+	k-páskový TS $\delta: (Q-\{q_F\})\times\Gamma_1\times\cdots \rightarrow Q\times(\Gamma_1 \cup \{L,R\})\times\cdots$\\
+	\\
+	Alternativy se stejnou výpočetní silou:\\
+	Automaty s 1 FIFO frontou, vícezásobníkové automaty, automat s čítačem, +-1 operacemi a testem na 0, $\lambda$-kalkul, parciálně rekurzivní funkce
+	\vspace{1pt}
 	}\\
+	\hline
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Konfigurace
+	% kontextové
+	\pbox{\wkont}{
+	\vspace{1pt}
+	$C=(q,<\gamma>,n) \in Q\times\Gamma^*\times\mathbb{N}_0, |\gamma|=|\omega| \wedge n\leq|\omega| + 2$\\
+	$\gamma$ - obsah pásky, $\omega$ - vstup, $n$ - pozice hlavy
+	\vspace{1pt}
+	}&
+	% rekurzivní
+	\multicolumn{2}{c|}{\pbox{\wrekall}{
+	$C=(q,\gamma,n)\in Q\times\{\gamma\Delta^\omega\}\times\mathbb{N}_0$\\
+	$\gamma$ - obsah pásky, $n$ - pozice hlavy, $\Delta^\omega$ - nekonečná sekvence blanků
+	}}\\
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Relace přechodu
 	\hline
 	% kontextové
 	\pbox{\wkont}{
+	Stejné jako TS, jen u posunu vpravo podmínka $n\leq|\omega|$
 	}&
 	% rekurzivní
-	\pbox{\wrek}{
-	}&
-	% rek. vyčíslitelné
-	\pbox{\wrekv}{
-	}\\
+	\multicolumn{2}{c|}{\pbox{\wrekall}{
+	\vspace{1pt}
+	$\vdash \subseteq (Q\times\Gamma^\omega\times\mathbb{N}_0)\times(Q\times\Gamma^\omega\times\mathbb{N}_0)$, $\gamma_n$ - $n$-tý symbol řetězce, $s^n_b(\gamma)$ - řetězec, který vznikne záměnou $n$-tého znaku v $\gamma$ za $b$\\
+	$(q,\gamma,n)\vdash(q',\gamma,n+1)$ pro $\delta(q,\gamma_n) = (q',R)$ posun vpravo\\
+	$(q,\gamma,n)\vdash(q',\gamma,n-1)$ pro $\delta(q,\gamma_n) = (q',L)$ posun vlevo\\
+	$(q,\gamma,n)\vdash(q',s^n_b(\gamma),n)$ pro $\delta(q,\gamma_n) = (q',b)$ změna symbolu na pásce\\
+	}}\\
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Jazyk formálně
 	\hline
 	% kontextové
 	\pbox{\wkont}{
+	\vspace{1pt}
+	$L(M) = \{\omega|(q_0,<\omega>,0)\vdash^*_M(q_F,<\gamma>,n) \wedge \gamma \in \Gamma^* \wedge |\gamma|=|\omega| \wedge n\in\mathbb{N}_0 \wedge n \leq |\omega|+2\}$
+	\vspace{1pt}
 	}&
 	% rekurzivní
 	\pbox{\wrek}{
+	$L(M) = \{M \text{ rozhoduje jazyk } L(M)\}$
 	}&
 	% rek. vyčíslitelné
 	\pbox{\wrekv}{
+	$L(M) = \{\omega|(q_0,\Delta\omega\Delta^\omega,0)\vdash^*_M(q_F,\gamma,n)\wedge \gamma\in\Gamma^* \wedge n\in\mathbb{N}_0\}$
 	}\\
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% příklad
 	\hline
 	% kontextové
 	\pbox{\wkont}{
+	\vspace{1pt}
+	$L=\{a^nb^nc^n|n\geq0\}$\\
+	$S\rightarrow aSBC|aBC|\varepsilon, CB\rightarrow HB, HB\rightarrow HC,$\\ $HC\rightarrow BC, aB\rightarrow ab, bB\rightarrow bb, bC\rightarrow bc, cC\rightarrow cc$
+	\vspace{1pt}
 	}&
 	% rekurzivní
 	\pbox{\wrek}{
+	$L=\{(r_1, r_2)|L(r_1) = L(r_2)\wedge r_1, r_2 \in RV\}$\\
+	Ekvivalence regulárních výrazů.
 	}&
 	% rek. vyčíslitelné
 	\pbox{\wrekv}{
+	$L_{HP} = \{<M>\#<\omega>| M \text{ zastaví pro } \omega\}$
+	$L_{MP} = \{<M>\#<\omega>| \omega \in L(M)\}$
 	}\\
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Tvar pravidel
 	\hline
 	% kontextové
 	\pbox{\wkont}{
+	\vspace{1pt}
+	$\alpha A\beta \rightarrow \alpha\gamma\beta$, \\
+	alternativně $\alpha \rightarrow \beta$, kde $|\alpha|\leq|\beta|$, případně s
+	$S \rightarrow \varepsilon$, $S$ není nikdy na pravé straně.\\
+	$\alpha,\beta \in (N\cup\Sigma)^*, A \in N$\\
+	$\gamma \in (N\cup\Sigma)^+$
 	}&
 	% rekurzivní
-	\pbox{\wrek}{
-	}&
-	% rek. vyčíslitelné
-	\pbox{\wrekv}{
-	}\\
+	\multicolumn{2}{c|}{\pbox{\wrekall}{
+	$\alpha \rightarrow \beta$\\
+	$\alpha \in (N\cup\Sigma)^*N(N\cup\Sigma)^*$\\
+	$\beta \in (N\cup\Sigma)^*$
+	}}\\
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% rozhodnutelnost
 	\hline
 	% kontextové
 	\pbox{\wkont}{
-		\tabitem\textbf{Prázdnost}:
-		\tabitem\textbf{Neprázdnost}:
-		\tabitem\textbf{Náležitost}:
-		\tabitem\textbf{Konečnost}:
+		\tabitem\textbf{Prázdnost}: Není, {\em důkaz přes PCP.}
+		\tabitem\textbf{Neprázdnost}: Částečně
+		\tabitem\textbf{Náležitost}: Rozhodnutelné, {\em páska je omezena, lze tedy vyčíslit všechny kombinace a zkontrolovat.}
+		\tabitem\textbf{Konečnost}: Není, {\em asi zase přes PCP.}
+	\vspace{2pt}
 	}&
 	% rekurzivní
 	\pbox{\wrek}{
-		\tabitem\textbf{Prázdnost}:
-		\tabitem\textbf{Neprázdnost}:
-		\tabitem\textbf{Náležitost}:
-		\tabitem\textbf{Konečnost}:
+		\tabitem\textbf{Prázdnost}: Není, {\em důkaz přes PCP.}
+		\tabitem\textbf{Neprázdnost}: Částečně
+		\tabitem\textbf{Náležitost}: Rozhodnutelné, {\em z definice musí vždy zastavit a říct výsledek.}
+		\tabitem\textbf{Konečnost}: Není, {\em důkaz přes PCP.}
+	\vspace{2pt}
 	}&
 	% rek. vyčíslitelné
 	\pbox{\wrekv}{
-		\tabitem\textbf{Prázdnost}:
-		\tabitem\textbf{Neprázdnost}:
-		\tabitem\textbf{Náležitost}:
-		\tabitem\textbf{Konečnost}:
+		\tabitem\textbf{Prázdnost}: Není, {\em důkaz přes co-HP, nebo PCP.}
+		\tabitem\textbf{Neprázdnost}: Částačně, {\em viz HP.}
+		\tabitem\textbf{Náležitost}: Částačně, {\em viz MP.}
+		\tabitem\textbf{Konečnost}: Není, {\em viz co-HP.}
+	\vspace{2pt}
 	}\\
 	\hline
-
+	\multicolumn{2}{l}{\pbox{\wrekall}{
+	\vspace{2pt}
+	Jazyky mimo $\mathcal{L}_0$ (jazyky algoritmicky neřešitelných problémů):\\
+	$co-L_{HP} = \{<M>\#<\omega>| M \text{ nezastaví pro } \omega\}$
+	$co-L_{MP} = \{<M>\#<\omega>| \omega \not\in L(M)\}$
+	}}&\\
 
 \end{tabular}
 \end{table}
+
+
+
 %\end{landscape}
 %\restoregeometry
 \end{document}

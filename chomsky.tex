@@ -43,7 +43,7 @@
 	\hline
 	\hline
 	\pbox{\whead}{
-		\texttt{automat}\\
+		\texttt{Automat}\\
 		$Q$ -- konečná množina stavů\\
 		$\Sigma$ -- vstupní abeceda\\
 		$\Gamma$ -- pásková (zásobníková) abeceda\\
@@ -77,7 +77,7 @@
 	\hline
 	\pbox{\whead}{
 		\vspace{2pt}
-		\texttt{konfigurace}\\
+		\texttt{Konfigurace}\\
 		$q$ -- aktuální stav\\
 		$\omega$ -- nezpracovaná část vstupu
 		\vspace{2pt}
@@ -87,7 +87,7 @@
 	% det. bezk.
 	\multicolumn{2}{c|}{\pbox{\wBothZA}{$C=(q,\omega,\gamma) \in Q\times\Sigma^*\times\Gamma^*$}}\\
 	\hline
-	\pbox{\whead}{\texttt{relace přechodu}} &
+	\pbox{\whead}{\texttt{Relace přechodu}} &
 	% regulární
 	\pbox{\wreg}{
 		$\vdash \in (Q\times\Sigma^*)\times(Q\times\Sigma^*)$\\
@@ -98,7 +98,7 @@
 		\vspace{2pt}
 		$\vdash \in (Q\times\Sigma^*\times\Gamma^*)\times(Q\times\Sigma^*\times\Gamma^*)$\\
 		$(q,\omega,\gamma)\vdash(q',\omega',\gamma') \Leftrightarrow$
-		$\omega = a\omega' \wedge \gamma = Z\alpha \wedge \gamma' = Z\beta \wedge (q',\beta)\in\delta(q,a,\alpha)$
+		$\omega = a\omega' \wedge \gamma = Z\alpha \wedge \gamma' = \beta\alpha \wedge (q',\beta)\in\delta(q,a,Z)$
 		\vspace{2pt}
 	}}\\
 	\hline
@@ -147,7 +147,7 @@
 	\multicolumn{2}{c|}{\pbox{\wBothZA}{
 		$A \rightarrow \alpha; \alpha \in (N \cup \Sigma)^*$\\
 		CNF: $A \rightarrow BC|x$ pro $A,B,C \in N, x \in \Sigma$\\
-		GNF: $A \rightarrow \beta x$ pro $A\in N, \beta \in N^*, x \in \Sigma$
+		GNF: $A \rightarrow x\beta$ pro $A\in N, \beta \in N^*, x \in \Sigma$
 	}}\\
 	\hline
 	\pbox{\whead}{\texttt{Rozhodnutelnost}}&
@@ -161,8 +161,8 @@
 	% bezk.
 	\multicolumn{2}{c|}{\pbox{\wBothZA}{
 		\tabitem\textbf{Prázdnost}: Rozhodnutelný, {\em sestrojím gramatiku a spočítám množinu $N_T$ neterminálů generujících terminální řetězce. Pokud $S \in N_T$, tak $L\not = \emptyset$.}
-		\tabitem\textbf{Neprázdnost}: Rozhodnnutelný, {\em analogicky.}
-		\tabitem\textbf{Náležitost}: Rozhodnnutelný, {\em udělám průnik KA pro konkrétní řetězec se ZA pro jazyk a ověřím prázdnost.}
+		\tabitem\textbf{Neprázdnost}: Rozhodnutelný, {\em analogicky.}
+		\tabitem\textbf{Náležitost}: Rozhodnutelný, {\em udělám průnik KA pro konkrétní řetězec se ZA pro jazyk a ověřím prázdnost.}
 		\tabitem\textbf{Konečnost}: Rozhodnutelný, {\em přes pumping lemma.}
 	}}\\
 	\hline
@@ -232,7 +232,7 @@
 	\hline
 	% kontextové
 	\pbox{\wkont}{
-	Stejné jako TS, jen u posunu vpravo podmínka $n\leq|\omega|$
+	Stejné jako TS, jen u posunu vpravo podmínka $n\leq|\omega|$ a vlevo $n > 0$.
 	}&
 	% rekurzivní
 	\multicolumn{2}{c|}{\pbox{\wrekall}{
@@ -276,7 +276,7 @@
 	}&
 	% rek. vyčíslitelné
 	\pbox{\wrekv}{
-	$L_{HP} = \{<M>\#<\omega>| M \text{ zastaví pro } \omega\}$
+	$L_{HP} = \{<M>\#<\omega>| M \text{ zastaví pro } \omega\}$\\
 	$L_{MP} = \{<M>\#<\omega>| \omega \in L(M)\}$
 	}\\
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

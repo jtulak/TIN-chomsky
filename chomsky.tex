@@ -1,0 +1,150 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[czech]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{parskip}
+\usepackage{pbox}
+\newcommand{\tabitem}{~\\~~\llap{\textbullet}~}
+
+\usepackage[a4paper,margin=1cm,landscape]{geometry}
+\usepackage{pdflscape}
+\pagenumbering{gobble}
+
+\newcommand{\whead}{6cm}
+\newcommand{\wreg}{6.5cm}
+\newcommand{\wdza}{5.5cm}
+\newcommand{\wza}{6.5cm}
+\newcommand{\wBothZA}{12cm} % wdza + wza
+
+\begin{document}
+%\newgeometry{margin=1cm} % modify this if you need even more space
+%\begin{landscape}
+\begin{table}
+\begin{tabular}{|l|l|l|l|}
+	\hline
+	& \pbox{\wreg}{\textbf{Regulární jazyky} $\mathcal{L}_3$} &
+	\pbox{\wdza}{\textbf{Deterministické bezkontextové jazyky}} &
+	\pbox{\wza}{\textbf{Bezkontextové jazyky} $\mathcal{L}_2$}\\
+	\hline
+	\hline
+	\pbox{\whead}{
+		\texttt{automat}\\
+		$Q$ -- konečná množina stavů\\
+		$\Sigma$ -- vstupní abeceda\\
+		$\Gamma$ -- pásková (zásobníková) abeceda\\
+		$\delta$ -- přechodová funkce\\
+		$q_0 \in Q$ -- počáteční stav\\
+		$F\subseteq Q$ -- množina koncových stavů\\
+		$Z_0$ -- počáteční symbol na zásobníku
+	} & \pbox{\wreg}{
+		Konečný -- KA $M = (Q, \Sigma, \delta, q_0, F)$\\
+		$\delta: Q\times\Sigma \rightarrow 2^Q$\\
+		\\
+		Eq. varianty: Deterministický DKA $Q\times\Sigma \rightarrow Q$\\
+		Úplný DKA $Q\times\Sigma \rightarrow Q \cup \{trap\}, trap \not \in Q$\\
+		Rozšířený DRKA $Q\times (\Sigma\cup \{\varepsilon\}) \rightarrow Q$
+	} & \pbox{\wdza}{
+		Deterministický -- DZA. Viz ZA, s následujícím omezením.\\
+		$\forall q\in Q, a \in \Sigma, z \in \Gamma:$\\
+		$|\delta(q,a,z)| \leq 1 \wedge |\delta(q,\varepsilon,z)| = 0 \vee$\\
+		$|\delta(q,a,z)| = 0 \wedge |\delta(q,\varepsilon,z)| \leq 1$\\
+		\\
+		Eq. varianty: Rozšířený DRZA.
+	} & \pbox{\wza}{
+		Zásobníkový -- ZA\\
+		$M = (Q, \Sigma, \Gamma, \delta, q_0, Z_0, F)$\\
+		$\delta: Q\times(\Sigma\cup\{\varepsilon\})\times\Gamma \rightarrow 2^{Q\times\Gamma^*}$\\
+		\\
+		Eq. varianty: Rozšířený RZA umí pracovat s libovolným počtem $n$ symbolů na zásobníku najednou. $Q\times(\Sigma\cup\{\varepsilon\})\times\Gamma^* \rightarrow 2^{Q\times\Gamma^*}$
+	} \\
+	\hline
+	\pbox{\whead}{
+		\texttt{konfigurace}\\
+		$q$ -- aktuální stav\\
+		$\omega$ -- nezpracovaná část vstupu
+	} &
+	% regulární
+	\pbox{\wreg}{$C=(q,\omega) \in Q\times\Sigma^*$}&
+	% det. bezk.
+	\multicolumn{2}{c|}{\pbox{\wBothZA}{$C=(q,\omega,\gamma) \in Q\times\Sigma^*\times\Gamma^*$}}\\
+	\hline
+	\pbox{\whead}{\texttt{relace přechodu}} &
+	% regulární
+	\pbox{\wreg}{
+		$\vdash \in (Q\times\Sigma^*)\times(Q\times\Sigma^*)$\\
+		$(q,\omega) \vdash (q',\omega') \Leftrightarrow \omega = a\omega' \wedge q'\in\delta(q,a)$
+	} &
+	% det. bezk.
+	\multicolumn{2}{c|}{\pbox{\wBothZA}{
+		$\vdash \in (Q\times\Sigma^*\times\Gamma^*)\times(Q\times\Sigma^*\times\Gamma^*)$\\
+		$(q,\omega,\gamma)\vdash(q',\omega',\gamma') \Leftrightarrow$
+		$\omega = a\omega' \wedge \gamma = Z\alpha \wedge \gamma' = Z\beta \wedge (q',\beta)\in\delta(q,a,\alpha)$
+	}}\\
+	\hline
+	\pbox{\whead}{\texttt{Přijímaný jazyk}}&
+	% regulární
+	\pbox{\wreg}{$L_M={\omega|(q_0,\omega)\vdash^*_M(q_f,\varepsilon) \wedge q_f \in F}$}&
+	% det. bezk.
+	\pbox{\wdza}{$L_{DZA} \subset L_{ZA}$}&
+	% bezk.
+	\pbox{\wza}{
+		$L_{M\varepsilon}={\omega|(q_0,\omega,Z_0)\vdash^*_M(q',\varepsilon,\varepsilon) \wedge q' \in Q}$\\
+		$L_{Mf}={\omega|(q_0,\omega,Z_0)\vdash^*_M(q_f,\varepsilon,\gamma) \wedge q_f \in F}$\\
+		$L_{Mf\varepsilon}={\omega|(q_0,\omega,Z_0)\vdash^*_M(q_f,\varepsilon,\varepsilon) \wedge q_f \in F}$\\
+	}\\
+	\hline
+	\pbox{\whead}{\texttt{Příklad}}&
+	% regulární
+	\pbox{\wreg}{
+		$L=\{a^n|n\geq 0\}$\\
+		$S\rightarrow aS|\varepsilon$
+	}&
+	% det. bezk.
+	\pbox{\wdza}{
+		$L=\{a^nb^n|n\geq 0\}$\\
+		$S\rightarrow aSb|\varepsilon$
+	}&
+	% bezk.
+	\pbox{\wza}{
+		$L=\{ww^R|\text{R je reverzace řetězce}\}$\\
+		$S\rightarrow aSa|bSb|\varepsilon$
+	}\\
+	\hline
+	\pbox{\whead}{\texttt{Tvar pravidel}}&
+	% regulární
+	\pbox{\wreg}{
+		\texttt{Pravá lineární gramatika:}\\ $A \rightarrow xB|x; A,B \in N, x \in \Sigma^*$\\
+		\texttt{Levá lineární gramatika:}\\$A \rightarrow Bx|x$\\
+		\texttt{Regulární gramatika} je taková l. nebo r. gram., kde se poč. neterminál $S$ neobjevuje na pravé straně žádného pravidla.
+	}&
+	% det. bezk.
+	\multicolumn{2}{c|}{\pbox{\wBothZA}{
+		$A \rightarrow \alpha; \alpha \in (N \cup \Sigma)^*$\\
+		CNF: $A \rightarrow BC|x$ pro $A,B,C \in N, x \in \Sigma$\\
+		GNF: $A \rightarrow \beta x$ pro $A\in N, \beta \in N^*, x \in \Sigma$
+	}}\\
+	\hline
+	\pbox{\whead}{\texttt{Rozhodnutelnost}}&
+	% regulární
+	\pbox{\wreg}{
+		\tabitem\textbf{Prázdnost}: Rozhodnutelný, {\em lze sestrojit DKA, spočítat množinu dostupných stavů a pokud tam není žádný koncový, je jazyk prázdný.}
+		\tabitem\textbf{Neprázdnost}: Rozhodnutelný, {\em analogicky jako u prázdnosti.}
+		\tabitem\textbf{Náležitost}: Rozhodnutelný, {\em sestrojíme KA a pokud pro daný řetězec přejde do koncového stavu a přijme...}
+		\tabitem\textbf{Konečnost}: Rozhodnutelný, {\em viz prázdnost.}
+	}&
+	% bezk.
+	\multicolumn{2}{c|}{\pbox{\wBothZA}{
+		\tabitem\textbf{Prázdnost}: Rozhodnutelný, {\em sestrojím gramatiku a spočítám množinu $N_T$ neterminálů generujících terminální řetězce. Pokud $S \in N_T$, tak $L\not = \emptyset$.}
+		\tabitem\textbf{Neprázdnost}: Rozhodnnutelný, {\em analogicky.}
+		\tabitem\textbf{Náležitost}: Rozhodnnutelný, {\em udělám průnik KA pro konkrétní řetězec se ZA pro jazyk a ověřím prázdnost.}
+		\tabitem\textbf{Konečnost}: Rozhodnutelný, {\em přes pumping lemma.}
+	}}\\
+	\hline
+
+\end{tabular}
+\end{table}
+%\end{landscape}
+%\restoregeometry
+\end{document}

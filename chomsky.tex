@@ -90,13 +90,13 @@
 	\pbox{\whead}{\texttt{Relace přechodu}} &
 	% regulární
 	\pbox{\wreg}{
-		$\vdash \in (Q\times\Sigma^*)\times(Q\times\Sigma^*)$\\
+		$\vdash \subseteq (Q\times\Sigma^*)\times(Q\times\Sigma^*)$\\
 		$(q,\omega) \vdash (q',\omega') \Leftrightarrow \omega = a\omega' \wedge q'\in\delta(q,a)$
 	} &
 	% det. bezk.
 	\multicolumn{2}{c|}{\pbox{\wBothZA}{
 		\vspace{2pt}
-		$\vdash \in (Q\times\Sigma^*\times\Gamma^*)\times(Q\times\Sigma^*\times\Gamma^*)$\\
+		$\vdash \subseteq (Q\times\Sigma^*\times\Gamma^*)\times(Q\times\Sigma^*\times\Gamma^*)$\\
 		$(q,\omega,\gamma)\vdash(q',\omega',\gamma') \Leftrightarrow$
 		$\omega = a\omega' \wedge \gamma = Z\alpha \wedge \gamma' = \beta\alpha \wedge (q',\beta)\in\delta(q,a,Z)$
 		\vspace{2pt}
@@ -104,15 +104,15 @@
 	\hline
 	\pbox{\whead}{\texttt{Přijímaný jazyk}}&
 	% regulární
-	\pbox{\wreg}{$L_M={\omega|(q_0,\omega)\vdash^*_M(q_f,\varepsilon) \wedge q_f \in F}$}&
+	\pbox{\wreg}{$L_M=\{\omega|(q_0,\omega)\vdash^*_M(q_f,\varepsilon) \wedge q_f \in F\}$}&
 	% det. bezk.
 	\pbox{\wdza}{$L_{DZA} \subset L_{ZA}$}&
 	% bezk.
 	\pbox{\wza}{
 		\vspace{2pt}
-		$L_{M\varepsilon}={\omega|(q_0,\omega,Z_0)\vdash^*_M(q',\varepsilon,\varepsilon) \wedge q' \in Q}$\\
-		$L_{Mf}={\omega|(q_0,\omega,Z_0)\vdash^*_M(q_f,\varepsilon,\gamma) \wedge q_f \in F}$\\
-		$L_{Mf\varepsilon}={\omega|(q_0,\omega,Z_0)\vdash^*_M(q_f,\varepsilon,\varepsilon) \wedge q_f \in F}$\\
+		$L_{M\varepsilon}=\{\omega|(q_0,\omega,Z_0)\vdash^*_M(q',\varepsilon,\varepsilon) \wedge q' \in Q\}$\\
+		$L_{Mf}=\{\omega|(q_0,\omega,Z_0)\vdash^*_M(q_f,\varepsilon,\gamma) \wedge q_f \in F\}$\\
+		$L_{Mf\varepsilon}=\{\omega|(q_0,\omega,Z_0)\vdash^*_M(q_f,\varepsilon,\varepsilon) \wedge q_f \in F\}$\\
 	}\\
 	\hline
 	\pbox{\whead}{\texttt{Příklad}}&

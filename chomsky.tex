@@ -11,6 +11,7 @@
 \usepackage{pbox}
 \usepackage{datetime}
 \usepackage{url}
+\usepackage{amssymb} % for \smallsetminus
 \newcommand{\tabitem}{~\\~~\llap{\textbullet}~}
 
 \usepackage[a4paper,margin=1cm,landscape]{geometry}
@@ -192,7 +193,7 @@
 	% kontextové
 	\pbox{\wkont}{
 	Lineárně omezený automat - TS, který nikdy neopustí tu část pásky, na které byl zapsaný vstup (např. zarážka vlevo a vpravo od vstupu). Formálně:\\
-	$\Sigma \subseteq \Gamma - \{\Delta, <, >\}$
+	$\Sigma \subseteq \Gamma \smallsetminus \{\Delta, <, >\}$
 	}&
 	% rekurzivní
 	\pbox{\wrek}{
@@ -202,11 +203,11 @@
 	\pbox{\wrekv}{
 	\vspace{1pt}
 	Turingův stroj TS $M=(Q, \Sigma, \Gamma, \delta, q_0, q_F)$,\\
-	$\Sigma \subseteq \Gamma - \{\Delta\}, L,R \not \in \Gamma, q_F \in Q$\\
-	$\delta: (Q-\{q_F\})\times\Gamma \rightarrow Q\times(\Gamma \cup \{L,R\})$\\
+	$\Sigma \subseteq \Gamma \smallsetminus \{\Delta\}, L,R \not \in \Gamma, q_F \in Q$\\
+	$\delta: (Q \smallsetminus \{q_F\})\times\Gamma \rightarrow Q\times(\Gamma \cup \{L,R\})$\\
 	\\
 	Eq. varianty: víc koncových stavů, s oboustranně $\infty$ páskou,\\ nedeterministický $\delta: \cdots \rightarrow 2^{Q\times(\Gamma \cup \{L,R\})}$\\
-	k-páskový TS $\delta: (Q-\{q_F\})\times\Gamma_1\times\cdots \rightarrow Q\times(\Gamma_1 \cup \{L,R\})\times\cdots$\\
+	k-páskový TS $\delta: (Q \smallsetminus \{q_F\})\times\Gamma_1\times\cdots \rightarrow Q\times(\Gamma_1 \cup \{L,R\})\times\cdots$\\
 	\\
 	Alternativy se stejnou výpočetní silou:\\
 	Automaty s 1 FIFO frontou, vícezásobníkové automaty, automat s čítačem, +-1 operacemi a testem na 0, $\lambda$-kalkul, parciálně rekurzivní funkce
